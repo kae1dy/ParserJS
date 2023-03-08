@@ -11,13 +11,13 @@ TARGET_PATH = "./build/my-languages.so"
 
 def parse_code(data_path=DATA_PATH, lang_path=LANG_PATH, target_path=TARGET_PATH):
     Language.build_library(
-        TARGET_PATH,
-        [LANG_PATH]
+        target_path,
+        [lang_path]
     )
-    JS_LANGUAGE = Language('build/my-languages.so', 'javascript')
+    JS_LANGUAGE = Language(target_path, 'javascript')
     parser = Parser()
     parser.set_language(JS_LANGUAGE)
-    data = Path(DATA_PATH)
+    data = Path(data_path)
 
     tokens = []
 
