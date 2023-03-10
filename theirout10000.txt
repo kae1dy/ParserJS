@@ -1,0 +1,65 @@
+570850
+processing: 1
+processing-instance  0 / 10000
+processing-instance  1000 / 10000
+processing-instance  2000 / 10000
+processing-instance  3000 / 10000
+processing-instance  4000 / 10000
+processing-instance  5000 / 10000
+processing-instance  6000 / 10000
+processing-instance  7000 / 10000
+processing-instance  8000 / 10000
+processing-instance  9000 / 10000
+1  time cost: 273.21507477760315 s
+processing: 3
+processing-instance  0 / 10000
+processing-instance  1000 / 10000
+processing-instance  2000 / 10000
+processing-instance  3000 / 10000
+processing-instance  4000 / 10000
+processing-instance  5000 / 10000
+processing-instance  6000 / 10000
+processing-instance  7000 / 10000
+processing-instance  8000 / 10000
+processing-instance  9000 / 10000
+3  time cost: 271.70027589797974 s
+processing: 5
+processing-instance  0 / 10000
+processing-instance  1000 / 10000
+processing-instance  2000 / 10000
+processing-instance  3000 / 10000
+processing-instance  4000 / 10000
+processing-instance  5000 / 10000
+processing-instance  6000 / 10000
+processing-instance  7000 / 10000
+processing-instance  8000 / 10000
+processing-instance  9000 / 10000
+5  time cost: 271.70299792289734 s
+processing: 10
+processing-instance  0 / 10000
+processing-instance  1000 / 10000
+processing-instance  2000 / 10000
+processing-instance  3000 / 10000
+processing-instance  4000 / 10000
+processing-instance  5000 / 10000
+processing-instance  6000 / 10000
+processing-instance  7000 / 10000
+processing-instance  8000 / 10000
+processing-instance  9000 / 10000
+10  time cost: 271.3884048461914 s
+
+k candidates:  1
+PP    : 306/10000 (%3.06)
+BLEU mean              :  0.12638087618303526
+
+k candidates:  3
+PP    : 365/10000 (%3.65)
+BLEU mean              :  0.18623030047658953
+
+k candidates:  5
+PP    : 384/10000 (%3.84)
+BLEU mean              :  0.21129777767463506
+
+k candidates:  10
+PP    : 393/10000 (%3.93)
+BLEU mean              :  0.24047768053982735

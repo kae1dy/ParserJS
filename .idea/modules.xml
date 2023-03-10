@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ParserJS.iml" filepath="$PROJECT_DIR$/.idea/ParserJS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ParserJNew.iml" filepath="$PROJECT_DIR$/.idea/ParserJNew.iml" />
     </modules>
   </component>
 </project>

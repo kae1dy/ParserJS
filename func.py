@@ -1,41 +1,27 @@
 import tree_sitter
 from tree_sitter import Language, Parser
-from pathlib import Path
-import csv
 from collections import deque
 
-DATA_PATH = "./dataset"
-LANG_PATH = "./tree-sitter-javascript"
+LANG_PATH = "./tree-sitter-java"
 TARGET_PATH = "./build/my-languages.so"
 
+Language.build_library(
+    TARGET_PATH,
+    [LANG_PATH]
+)
 
-def parse_code(data_path=DATA_PATH, lang_path=LANG_PATH, target_path=TARGET_PATH):
-    Language.build_library(
-        target_path,
-        [lang_path]
-    )
-    JS_LANGUAGE = Language(target_path, 'javascript')
-    parser = Parser()
-    parser.set_language(JS_LANGUAGE)
-    data = Path(data_path)
+JAVA_LANGUAGE = Language(TARGET_PATH, 'java')
+parser = Parser()
+parser.set_language(JAVA_LANGUAGE)
 
+
+def parse_code(data_list: list):
     tokens = []
 
-    for file in data.iterdir():
-        parser = Parser()
-        parser.set_language(JS_LANGUAGE)
-        # test on manual100.tsv (to reduce time)
-        # if file.suffix == ".tsv":
-        if file.name == 'manual100.tsv':
-
-            with open(str(file)) as code:
-                code_tsv = csv.reader(code, delimiter="\t")
-
-                for line in code_tsv:
-                    # maybe "class Test {" + line[0] + " }" ???
-                    tree = parser.parse(bytes(line[0], "utf8"))
-                    root_node = tree.root_node
-                    tokens.append(get_tokens(root_node))
+    for line in data_list:
+        tree = parser.parse(bytes("class Test {" + line + " }", "utf8"))
+        root_node = tree.root_node
+        tokens.append(get_tokens(root_node))
     return tokens
 
 
@@ -46,8 +32,11 @@ def get_tokens(root: tree_sitter.Node) -> list:
 
     while list_nodes:
         node = list_nodes.popleft()
+        if node.has_error:
+            continue
+
         if not node.children:
-            leaves.append(node.type)
+            leaves.append(node.text)
 
         for children in node.children:
             if children:

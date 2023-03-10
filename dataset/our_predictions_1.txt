@@ -1,0 +1,1000 @@
+Is this order guaranteed, ie ls-refs before fetch?
+This is really minor, but could you use Path api here? As it will return better error message than File will. giving some context on what is going on...
+throw an exception? this is not intended to use.
+Here is also that unusual check.
+Please remove an excessive space character.
+Strings would be better to be stored in a constant
+Maybe relate those hardcoded strings to the enum above?
+ACCESS_CONSENT_ATTR and INST_ACCESS_CONSENT_ATTR are defined in both SamlConstants and NhincConstants. Remove from NhincConstants.
+Please don't do assignement and comparison within the same expression. You can also avoid the break by testing nullness and kind in while condition and doing the assignement in the body of the while.
+Maybe not needed? We don't have to check if a target process definition exists in the source container.
+nit: create static variable for this empty set and return that static variable
+ERR_DELETE_ERROR, add if there isn't one already
+Out of interest why can you not do DecisionTableOrientation.values()?
+in what scenario path list will be empty with copy error set to true ?
+No need to log here: return binary.getLong();
+no need to specify type on RHS
+check to make sure notificationUUID is not null
+static
+Agh code duplication! But I don't see a simple way around it. I was thinking about some fancy Java 8 streaming thing, but it's not trivial.
+Seems like there's a spacing issue here, two spaces instead of 4.
+do the comparison the other way around
+Because it can be called by both focusGained and mouseEnter, sometimes you have two active contexts. Maybe there should be only one?
+You don't need this line because of green 31.
+Yes, polymorphism is what you want. instanceof generally is a last-resort kind of solution. Here you're in charge of the design so you can easily avoid it by adding another level to your hierarchy.
+The responsebody annotation can be removed, because the class is annotated with RestController. suggestion public Promise<CodeSystems> searchByGet(final CodeSystemRestSearch params) {
+this.redisTemplate
+can't be null?
+Why the sub string ?
+This filter lead to me to look at the factory again and ask about why/where the exception would be thrown! It seems strange that a factory could NOT return a concrete object.
+Should this be String.valueOf or is cnn the way to go?
+I think pNode.getClass() doesn't have to be in the loop, you can move to above and return empty is the condition is true
+See above about checking the labels
+This is not a related change... if you can move it to a separate patchset. Also, as per discussion, I think that rather than cutting the mark functionality in the middle here, we should zero it out in the config and leave the logic. If we really want to do this then we ought to remove the logic wholesale (which I'm reluctant to do). For now, maybe let's just set it to 0 in the config?
+It is not unheard of for a connection to db server to fail. Should it attempt retry rather than failing?
+two places where partition is serialized? Not very comfortable with that - this is repeated code that needs to be kept in sync.
+Make this a typed exception (e.g. PlatformServicesException)
+Why does this need to be ordered by the synthetic primary key?
+Was seconds an intentional omission here?
+Hash code
+Please store these values in a static variable, such as ASSISTANT_USERNAME :smile:
+no need to create a set here..
+Maybe it's just me, but I would find a simple if-else clause more readable.
+fail
+null or empty list?
+looks like this could be ClientReliableTopicConfig (similar to the way done below for FlakeIdGeneratorConfig)
+Fine but you should then add FormValidation DescriptorImpl.doCheckName(@QueryParameter String name) so that users of **Pipeline Syntax** will see that a _proposed_ step configuration is invalid.
+can you pull this from a static string?
+can be simplier: showing empty array even if the value is null is not really a big deal imo. Also, toString are usually only used for logger..
+recordCount++; doesn't work?
+Should use StatusHandler.log() instead
+Could you check for null or empty? Via StringUtils.isBlank
+rm 99
+Same concern here. true looks wrong.
+i would split this line into two for better readability. also gameUser.getAchievements() could be puted to variable
+@Serranya The same here. See above.
+2xx
+You should use ThreadContext.putAll() here.
+I think it might be easier to create a list and compare that?
+same as above... why not use simple if/else here?
+For readability sake, can these two increments use the same atomic method call?
+You can inject the header variable in this class too, to avoid dealing with static methods.
+Immutable?
+Please use networkClusters instead of getNetworkClusterList().getItems()
+so for IPv6 hosts when a machine is cloned this is going to break?
+I continue to think that **aifc** should to be here...
+SetConfigurationObject should be tested on an E-meter DEVICE_IDENTIFICATION_G_LABEL -> DEVICE_IDENTIFICATION_E_LABEL getDeviceIdG -> getDeviceIdE
+Is there a reason not to use Util.TOLERANCE?
+This could be null, we should probably handle this if the JIRA api changes again
+I don't see a test for this new method
+More accurate error message
+would this be called often, and would the list copy be expensive?
+Just a note that FetchSessionHandler is used by the consumer too, so we will either need two separate implementations or make sure it works just as well for the consumer too.
+Add check that non-null
+if (realm != null) maybe - just to be safe.
+final
+minor: don't need this. qualifiers
+bad name of method <LINK_0>
+Add a message. Without it, you just get a NullPointerException with no message. ie. "'containerName' cannot be null." Same with another usages of this.
+Seems like the previous tests should also assert on the length?
+I guess snapshotting right now is cheap since there aren't actually going to be events, but this could lead to unintended consequences later on. It seems safer to return Optional.of(FAKE)? - you still take a snapshot when there's a leader election, but that's relatively uncommon
+fileNameBytes is interpreted according to platform encoding. Give it a StandardCharsets.UTF_8 to pin it down.
+Checking for test mode is fine, but maybe we should do it when this method is called, rather than in here -- the environment it's run in doesn't seem like a concern of this class.
+And this change should be reverted as well.
+This is too early: if thread 1 does this check is de-scheduled before line 238, thread 2 could run the entire stop() method and then thread 1 would create the spliterator even though running == false. I think the only safe place to do the check is after creating the spliterator.
+Is this really sufficient to test your WCheckBoxWebElement? One check box is sufficient if it is exposed through a getter so the tests can set properties on it.
+We should validate that's non-null (to fail sooner).
+This should return an immutable collection.
+Do we want to use the platform's default charset when we read this from the database? I suggest we use a fix encoding here like UTF-8? suggestion return new String(licenseResource.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+If the code fails to close in, it will never try to close out
+I guess this will crash as well if getCompatibleOperatingSystems() returns null.
+I keep seeing these checks everywhere that provider is not in SOCIAL_PROVIDERS. I think a positive assertion would be better. Like GENERIC_PROVIDERS.contaains(providerid)
+You need to check that conceptUuid is not null and blank
++ desc
+I think this should be headers.get(name).
+Why would you pick a linked list here instead of an array list? Since you know the number of qualifiers upfront, you can even initialise the array to the exact size you need.
+Do we really want to move this from trace to debug?
+@apc999 This needs to be public or reflection will not work
+No need to use ConcurrentMap.
+Can this method return void instead? I feel it's a bit funny to return the same thing we just provided as input.
+Why give relayType its own variable and rcIndex and rcIntern not? And is it safe to parse a String to an Int without a try / catch?
+style nit: we don't use braces around single line blocks
+is DebugLogger.INSTANCE.w a sneaky way of calling the logger even when logging is disabled?
+this variable name is misleading, it contains not only the commandData but also Ne field (see also other ApduTest classes)
+With these changes, the test should fail as no exception is thrown anymore. The only reason this still passes is because there is no fail call before the catch block. Can you adapt the test to make sure it tests what was tested before?
+throw an assertion here, i should probably do that in my code as well
+Constructors can call other constructors in Java, so this should also work:  this(name, signature, ImmutableList.of())
+In the plugin.xml, you said TmfTraceStub and now you make the check for CtfTmfTraceStub, that is not coherent (even though I think it will fail elegantly).
+Modifier 'private' is redundant for Enum constructor - needs to be removed.
+Unknown file name and known line number? Should that be an error?
+One-line conditional statements without braces are bug prone. Please wrap such occurrences in braces
+We don't need to minus LOCAL_TZ offset for TimestampData, the millis is already an epoch milliseconds.
+Would it make sense to add something this.caches.clear() to the stop ?
+Preferably have one call the other?
+} catch (Throwable throwable) { throw new IOException( String.format( "Failed to truncate table '%s'", tableName.getNameAsString()), throwable); }
+Could we consolidate these catch clauses? Or is HornetQException a RuntimeException?
+I see a problem with this error - user doesn't know where the expected type comes from (it is already added from other task).
+Do a detection.  if (e instanceof RuntimeException) { throw (RuntimeException) e; } else { throw new RuntimeException(e) }
+Is it the same as this?  java final StringBuilder sb = padding(element, length - back.length()).append(back);
+does this needs to also do a null check for payload before assigning a new reference ?
+Not sure whether worth doing, but since the only usage is "DownloadImageManager" (that is in the same package), it is possible to remove "public".
+<LINK_0>
+why the new line?
+I'd rather toLowerCase() is applied after substring(), not before.
+Use MethodType.DERIVATIVE.getCode() and MethodType.MAINTENANCE.getCode()
+Space before {
+studentsWhoRespond -> studentsWhoResponded
+let's call it updateCodeMinings() instead.
+We should avoid using Java8 for issues which could be backported in 2.4.
+kind of curious what these magic numbers are
+It would have been more readable to split this commit into 2 : - One about refactoring to sanitze code - One about using new format
+Does this mean that new null handling unconditionally adds overhead in groupBy query processing?
+This null check should be done in line 274
+don't need optional, just use ImmutableSet.of(ports.get(getNodeType()) should work
+This is basically a guaranteed crash right? To be avoided at all costs, it's just making future work. A toast and a fall back to the note editor or anything is better than throwing a RuntimeException if we can avoid it
+Lots of unnecessary this. qualifiers.
+The return statement can be simplified return (currentTime - lastHealthCheck) >= minInterval;
+getParent() can return null
+Simple for-each?
+This check needs to be done in hasMore(), not nextRow(). hasMore() can block, nextRow technically cannot and just because there is another from hasMore() doesn't mean that it will be within the minTime.
+Please close client at the end.
+Why bother locking if the size returned is immediately going to be invalid? aka, some other thread may have already changed the size.
+Just return data.
+Let's do return fDetailedLoad; even if it is always null for now
+Let's rename "ignore" to "ignired" Please use fail(): <LINK_0>
+may be it is going to be more obvious to have dedicated variable for that? 'boolean predefinedSamplesCount' instead of 'totalSamplesRequested != -1' ?
+Same as above - log or throw the weird state.
+To be safe, should check gerritTrigger.getJob() != null first.
+since this is an instance variable, regardless whether it's thread local, you should have it qualified with this.
+fileName seems a bit redundant - why not do this in a single line? File file = new File(baseDir + "/src/main/resources/bundles/AppErrors.properties");
+In general I wonder why one should instantiate an (immutable) null Password. I mean passing a null parameter to the constructor. Should this be considered a bug instead and hence throw a runtime exception? Should we update the copyright date to 2017?
+throw exception
+Geometry is comparable?
+also check this
+Assert.notNull(expiry,..) checking might make sense here
+we should not throw an exception here, simply ignore
+<LINK_0>
+Question: Should not we add braces to this statement?
+Whoops, this needs to be the other way round (the first block is for ExecutionException and the second is for InterruptedException)!
+Please use curly braces for conditionals
+Could you add an assertion on one of the associated props? Just to be sure...
+As [mentioned](<LINK_0> in #408, this variable should be renamed to "args" to be more descriptive.
+add message to log
+@apc999 This needs to be public or reflection will not work
+Any reason in particular that it shouldn't give the effect to players?
+static import
+Looks like validation result is ignored. Let's wrap it with Assert.assertTrue(). Also constants on rows 115 and 118 should be changed to long (0 -> 0L and 1 -> 1L accordingly).
+Sorry forgot to mention to change the read to access here too
+is this required ?
+please add new HelpTag and HashName (as in StorageListModel)
+suggestion processInstanceIds.forEach(processInstanceId -> {  You dont need to use _.stream_ to access _forEach_
+This should check to make sure that notificationUUID is not null before attempting to delete it.
+While the completeness here is appreciated, toString is generally only used for logging. We can probably reduce the amount of fields we write here to keep our log statements cleaner.
+You could instead have a storeTTL option taking a string and parsed using DurationUtils, for more readable config. Actually I see other places already using storeTTL and using that so something is inconsistent.
+Per IRL, I meant to say uploadApiBase. This is fine too, but unrelated.
+Please use the Spring's Asserts for that, for consistency with rest of codebase
+Please add a check Objects.requireNonNull(supplier, "supplier is null");
+don't catch, but instead allow the ExceptionMapper to handle it
+we never use NULL, it is a bad practice in general.
+don't forget default case
+The try-catch surounding this can be replaced with JUnits [ExpectedException](<LINK_0> rule. It reads a bit nicer.
+Do we need to remove this? I have no idea how this can be exposed to users, but it looks useful. If this should be removed, the code computing the INVALID_ROW_COUNTER in HadoopDruidIndexerMapper should also be removed as well.
+right; logically correct I would still add a public static String toFullId(ConnectorId id) or something likethis (this can call to string then on the instance given into the method)
+Just return checkNotNull(id, "id").split("/");
+Consider adding null check here.
+Use org.ovirt.engine.core.compat.StringHelper.isNullOrEmpty(String)
+Do you need the fully qualified class name here?
+Oh yuck. ;)
+protected instead of package protected
+Why we removed final?
+rename to contribution
+Likewise don't need the if statement since the optional value will return empty.
+Please use TIME_FORMAT instead of "HH:mm:ss"
+nit: use SUBJECT
+Why do this ? You can iterate over the set just fine - no need to copy it to an arraylist
+check name?
+Have you intentionally omitted index check?
+No need to use UriBuilder
+return tags;
+I would not call the leaderContender under the lock because of the risk of introducing potential deadlocks.
+Asserting the actual message isn't a good idea because this could be localised or message changed which would break the test.
+you can just return 'Collections.emptyList()' - permission check is unneeded as the command is executed only internally
+you can actually use the returned boolean value to nullify astroDiscoveryJob and print the log.
+I would prefer an unconditional return string, so the string better represents the object value (with empty fields).
+agentDisconnect also sets this state.
+ImmutableSet.copyOf(Iterables.filter(...)) ?
+Can this happen ?
+you should have here setSucceeded(true) IIRC.
+Mid return may worsen readability
+The "Name" class implements correctly the "equals" method, so you can do just this: return SCHEMA_ENUMS.contains(type.getName());
+Why decryption is excluded?
+assertThat(element).hasTotalSize(6)
+having wallClock = 4 for atlasTs = 4 is potentially confusing (ditto below with 6/6).
+Because there is only one argument, we can pass workerMetrics instead of an object array.
+Value nor envVar wont be ever null, but empty strings, so that check will be valuable
+super.init() method never throw an exception.
+Hi, @nvazquez. I see a little mistake in you test, you are testing if the method has inserted a tag or not, I think that this test needs to verify if the template inserted in the templateResponse is the same that you has passed in the first param of the method. You can do it checking if each variable in both templates are equals. The same problem in the other tests cases. Ty.
+It seems Math.abs() is missed. What about negative values? And also please, add {} arround the procedure.apply(...)
+From <LINK_0> I still think that a declarative programming approach with streams is a much more elegant implementation than this.
+Why change the order? You normally stop in opposite order to creation. So, if you create embedded cache manager first and then the server, you normally stop server first, then the cache manager.
+does this need to be a class member?
+please add setSoftLimitInterval() setter and use it.
+@fanifieiev Let's put this in a constant.
+We get to rename this variable to prefix it with is I guess
+should be false unless one of the vm's disks has true for this
+What do you think about making this method final? Just to be sure that descendants will override the correct method (validateImpl()) instead of validate().
+Is this a good practice? Casting to an abstract class? it may be better to have an interface AccessControl and AbstractAccessControl then implements that interface... but that way you program against interfaces which seems cleaner to me.
+Please remember this ctor changed.
+Would be simpler as: return Arrays.asList(Action.RELOAD);
+I realize that the test case was just moved, but maybe for a separate commit or a follow up: Maybe the error could also give a hint on what would be correct. E.g. StringType can only have a single parameter value, received: ... Also in the other error messages. E.g. with 0 it could point out that it must be > 0.
+user.get() can return null
+value is redundant, just return right away.
+Duplicate in both createSubject and createEvidenceSubject methods. Consider to refactoring into helper method.
+Shouldn't this be a field so we don't have to create one each time
+On START_DATE, the discount factor for start date should be 1.
+The reason this is here is so that it doesn't get needlessly wrapped in a RuntimeException in the next catch block.
+this.lockVerbs (like below)
+minor suggestion: It is perhaps simpler to set a local variable for storing the exception value. Inspect its value in finally clause and then, take action.
+Assuming this is noting completion of initialization, perhaps "Finished initialization."
+Let's re-word this to a forced shutdown
+Would be awesome to rename it to something more descriptive like isDiscussionsPresent() or similar
+Pretty sure this is also supposed to just be the localization key.
+You could simply do super.setClazz(CommonLog.class)... You don't need to have a vaeiable pojoClass.
+this could be secret, if we support armored strings, you do NOT want to print it. The ClientConfiguration class could have two properties one for File, and one for the parsed string, logging the file name isn't an issue, but the PEM string would be
+Doesn't List as a Collection have a defined method to check whether it's empty or not?
+Why is LinkedHashMap required? I think the following is more efficient: java String[] entries = clientInfo.split(" "); Map<String,String> clientInfoMap = new LinkedHashMap<>(entries.length); for (String entry : entries) { String[] kvArray = entry.split("="); clientInfoMap.put(kvArray[0], (kvArray.length ==2)?kvArray[1]:"" ); }
+Could you check for null or empty? Via StringUtils.isBlank
+Can lease.getStartingAllowedRequests() every equal zero? Might want to check for that.
+Verify the injector has been set before using the delegate here
+Please remove this line
+Is it the 'native snappy library' that is missing or the java-snappy jar?
+addPermissions means you added a permission, but it doesn't mean that no restart is needed... unless I'm missing something here.
+I think this should be > 0 since a value list item of 1=One does not work.
+I think isConnected() would be appropriate here since you're saying "active" network connection. If we allowed the "connecting" state then we would need a BroadcastReceiver to delay the (re-)try until the network connection has been established.
+Pull this into a static final variable
+Needs to be in finally - we might get interrupted.
+I would put the return 0L here. This is probably the one and only place where you do not propagate the exception
+How about sticking following the Optional orElse( ) pattern? Staying with Java's names and Optional idioms gives more flexibility and it's a bit more familiar to users.
+same as above with the actionBarWrapper
+please use java.util.Objects.toString(username, "") instead
+I haven't tested yet but the code seems ok
+Can this be private, or is there another use case for default attribute outside the builder's call?
+To make the tests more resilient to future changes, please pick values that are unlikely to ever be the actual defaults. For example 234MB and 11MB.
+Removing the interceptors removes logging.
+Here and below: previously the code used only one table lookup operation, not it performs two lookups. Please consider to use get(name) and check the value to decide if it is illegal or not.
+Use this.key
+why exit here ?
+not sure why this field is public
+> Use emoveCallbacksAndMessages(null) to remove all the messages. > Use this.removeCallbacksAndMessages(null) instead. Done in Patch set 2
+I'd recommend using <LINK_0>
+Do we actually call init multiple times on a trace or is it a safe-guard? Just curious.
+different value 50 versus 1. Is that intended?
+why do we have a ; here?
+Probably makes sense to move this up too.
+are spaces OK in namespace strings?
+fos can be inside try ()
+Use a concurrentHasMap, then you can remove the synchronized on the public methods.
+(CRITICAL) This is not correct. Here you should add to _nextValueId instead of _nextDocId
+Nevermind, I see it is the Future.get() that throws the InterruptedException.
+Is this reload really necessary?
+Do you have time for this? We talked about it on Slack.
+probably don't want to keep filling this map up as we browse around. could just use getOrDefault?
+![INFO](<LINK_0> 'Severity: INFO') Do not forget to remove this deprecated code someday. [![rule](<LINK_1>](<LINK_2>
+Should this refer to a platform-relative constant?
+use use java.util.Objects
+Could you update this method to include "AbfsPerfInfo" introduced by HADOOP-16612?
+super.init() method never throw an exception.
+I feel like we should be able to take out a lot of these nullity checks. Let's keep this in mind for a future refactor.
+This cycle has very confusing brackets. Could you please add brackets to if and properly tabulate the last bracket?
+This one is already done on line 816. Do we need it again here?
+Likewise.
+Should be getStartTimeAsLong() and not getGenStartTimeAsLong().
+what happens if you call this several times? It will recreate again and again the asked number of threads. You should have some flag to specify that it's already started no?
+I wonder about simply adding a modifiersAST != null clause java boolean isStatic = modifiersAST != null && modifiersAST.findFirstToken(TokenTypes.LITERAL_STATIC) != null;  and then leaving the rest of the method unchanged/not necessarily introducing Scope.isInPatternDefinition Would that work?
+Could we somehow get the name of the source into the log lines? I think that would tremendously helpful in cases where there are multiple sources (which are common).
+Aren't there any chance that super.inputStream() **is** already PushbackInputStream, so, we don't need to wrap at all?
+You are still programming in Javascript here. :-P What about replacing "" with null here and remove "" from the variable declaration?
+Can this be private, or is there another use case for default attribute outside the builder's call?
+merge else if?
+I think it is done on purpose to avoid auto boxing/unboxing.
+no!
+You should also update the error message in order to tell users that this option can be used in order to switch the duplicate field validation off.
+Done, it looks like the change was not included in patchset1.
+I'd like to consider this as a completeExceptionally case. It doesn't need to return anything.
+Ik. Maven has logging facilities. We should use them.
+one more method where it can take file location of properties would be good.
+close streams
+Needs some sort of assert to show it succeeded
+You have yo use compareAndSet
+Why going for semantic here ??
+minor, is it method scope for Visible For Testing? If not please change it to private.
+The test incomplete, because of two reasons: 1. It always checks empty cache iterators. 2. It doesn't check that we can actually iterate on the iterator() and spliterator() results. See suggested changes below, does it makes sense for you? (changes will made test fail).  IgniteEx ign = startGrids(1); IgniteCache<Integer, String> cache = ign.cache(DEFAULT_CACHE_NAME); cache.put(1, "1"); cache.put(2, "2"); cache.put(3, "3");
+This should always be read from the configs.
+Why is this removed?
+Could we prefer a proper logger instead of System.x - we already have a logback.xml in the module.
+Assert.areNull
+You can remove the inheritance from translator and make this method static. So you won't need to create any instances of EnumTranslator.
+We can't do this - breaking change for anyone that has subclassed and implemented destroy(). I suggest we use // NOSONAR TODO: remove throws in 5.2, which removing it from our subclasses.
+suggestion
+should be named resource
+This needs to be changed to support locked stream syntax now.
+"else if" maybe?
+should be logged only once, not for each block (spooling is either enabled or disabled).
+This is not necessary.
+It's safer to call getProperty("replicatorFactor", DEFAULT_REP_FACTOR). You should validate the arguments as well.
+What is the actual possible runtime type for the value? This seems overly defensive - I would expect the value will either be a string or a Boolean, not randomly changing from run to run.
+This could be entirely done as a stream.
+Also added a try with resources here.
+How about:  int size = Math.min(b.height, b.width); setMinimumSize(new Dimension(s, s)); setPreferredSize(new Dimension(s, s)); setMaximumSize(new Dimension(s, s));
+Please add the 'can not recover' back? It clearly tells why we must abort the region server.
+given/ execute/ assert
+Not worth debugging for this QS
+hmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm! so we cannot validate this on gwt, but I do want to validate it at core. can we have something conditional? if the isAssignableFrom works then perform validation else not? when gwt will not use these classes any more we can just remove the conditional.
+Don't we have to say that this is uniqueId JDBC?
+Thanks for this clean-up throughout the code! I should probably start enforcing fcrepo4 code style rules sooner rather than later...
+One more - this will be 3
+is Options.INDEX_ON_THE_FLY the same as Defaults.CREATE_INDEX?
+any particular reason why this method doesn't require an IJavaProject ?
+This should be 10 << 20 so that the default is 10 MiB. That allows users to specify configuration with standard suffix units e.g.: [merge] inCoreLimit = 10m for a 10 MiB limit.
+given that specificity of this SV is exception type I would add the exceptionType in this.
+This will add the flag to *all* read-resource operations. I'd rather add it only when necessary as suggested at <LINK_0>
+are these setters used anywhere?
+this is not thread safe, nodes can be modified while building the subgraph. I suggest to use Lock for reading and writing accordingly instead of synchronized blocks
+I'd still prefer to have the operation for generating the 'key' for a muted topic to be a separate function, or even embed it into the Message object. for example:  mutedTopics.add(message.concatStreamAndTopic()); ... // in Message.java private String concatStreamAndTopic() { return getStream().getId() + getSubject(); }
+This is now hard to read since it combines two multiline expressions. Please break it up into separate expressions and use suitable variables for each value.
+instanceof Dataset is redundant
+pull this out into getMockAuthorizer() {return getFileSystem().getAbfsStore.getAuthorizer()}
+This will remove description set, please remove.
+There is no need to set the local scope reference to null, but if you prefer...
+matter of taste, this could also be return this.profileTypeRegistry != null;
+Can this be private, or is there another use case for default attribute outside the builder's call?
+Is value == null a valid case here?
+nit: Same here. Leave the checks in the switch and do the assignment at the end: this.path = path != null ? maybeTrimLeadingAndTrailingSlash(path) : null;
+Should we use org.apache.kafka.common.utils.Utils.closeQuietly ?
+Why uppercase fs?
+I would just delete the version check from master. The logic is very simple and unlikely to cause clashes that are hard to resolve even in the unlikely event of someone adding another field in the lifetime of 7.x.
+use return ... ? ... : ...?
+A little sanitization here would make a lot of sense, if nothing else make sure no ' ?
+[nit] There is also a cleaner approach using Guava:  java return Enums.getIfPresent(LoadbalancerAlgorithm.class, value).or(UNRECOGNIZED);
+Can the current method be executed on an other thread than the UI thread ? The layout command might need to get the figure info wth ui thread access.
+All current test is used in form assertThat(actual).testMethod(expected); and more - assertThat(actual) is support chaining: assertThat(t.remove(4)).isEqualTo(t).isNotSameAs(t);
+Use constants
+the workspaceitem needs to be deleted
+final?
+You may also want a test case for a search value that is non-blank but invalid.
+Can be reduced to throws IOException.
+Should we add null check?
+It seems we have kept these GoraHiveTestDriver setUpClass / tearDownClass? Is it possible to pragmatically control ( start/stop ) embedded server instance? With this setup can we guarantee embedded server instance is up and running before we start executing tests? There can be failures if we cannot have that guarantee.
+Why even rethrow? It is not clear from either JIRA or the PR who was catching the IOException to begin with and where it was swallowed, but anyway I see no reason to rethrow this. Just delete and remove the throws clause.
+this(cepInputTypeParam, cepInputConfigurationParam, fieldsParam, DEFAULT_SEPARATOR);
+It would make more sense to invert the names (the one with BUTTON1 is used after... call it stateMask2)
+I've always been slightly confused by this - is this only used for the pause before we start sweep? If so, it might be better to defined the backoff time you're adding completely separately from the definition here, unless it should always be 5x this one.
+As there's no extra handling when an IndexOutOfBoundsException is caught, both old and new code behaves the same way: any exception thrown by logicalPages.get( page ) will always be thrown back! As so, the try-catch is dispensable and it's best to leave the code as it was.
+get rid of "..." not enterprisy!
+move this line before above line, After super.cleanup method couldn't do any of the server requests.
+You should use ThreadContext.putAll() here.
+<b>Reporter: </b>PMD<br /><b>Violation: </b><a target="_blank" href="<LINK_0>">JUnitTestContainsTooManyAsserts</a><br /><b>Notes: </b>JUnit tests should not contain more than 1 assert(s).
+Maybe let the stop() method throw the exception instead of catching and printing?
+:smile: We prefer to use fail("BeanDefinitionStoreException expeted.") within try...catch
+You can use try with resources here so the Input stream is closed automatically.
+Duplicates JdbiStreams.toStream(Optional<T>). Although I'd be okay folding that method into this class.
+.endsWith("'sParty") has an implicit semantical meaning and therefore should be put into a dedicated method. I'd guess something like boolean isOwnPartiesChannel(String name) But just comparing the end of the name sounds really... odd?
+Delegate to isNonCodedDrug() when making the check.
+need to remove this print or convert it to log stmt
+Config class have constant defined for default config file name
+Can you please compare something else than integers (String will be ok)? Silly code change in assert method can break its logic but pass this test because both index and value are 2 :)
+This needs an @Override annotation.
+consider to inline uris
+Nitpick: startingCounter?
+Type casting again.
+Could this potentially be shortened? return acceptHeader.length() > BROWSER_ACCEPT_MAX_LENGTH ? DEFAULT_BROWSER_ACCEPT_HEADER : acceptHeader;
+I would add a Precondition for Result being an instanceof RowResult so that we know if our assumption here is in correct
+We should still be able to set the dialog's title (?) In this case, title is always dynamic as it comes from UI plugin API function call.
+rename to contribution
+Why do we have this constructor?
+nit: language is not supported: %s ?
+can this just be boolean instead of Boolean?
+.hasSize(), 2
+Do we need to null check event.post here?
+Is this signum call really needed here? compareTo should already return the correct value.
+optional suggestion: since we're extracting helper methods... it's mostly "false * 4" or "true * 4", so consider adding e.g. whenEverythingIsInitialized and whenNothingIsInitialized.
+getFullName()
+Don't need the hostAffinityEnabled check here. You can assume standbyContainer is present only when host-affinity is enabled.
+@idelcano I don't think this constructor is needed (unless you are thinking about adding something else later on). Just initialise the variables. Also the variables should be private if we have getter/setter.
+close already done in Util.read(..)
+Now this method does not do as it's named...
+nit, just make this real instead of mocking i.e. () -> FALLBACK_INT
+Wouldn't it be nice to check the path was observablePath rather than _any_ path?
+This is causing a nullptr in InitialGroovyManipulatorTest. I think it would be better to store a enabled Boolean and have initialise correctly set it and not store the userProperties object
+Check the env variable before returning true.
+We should close the FileOutputStream, relying on finalizers is very finicky
+better: authz (profile, profile, profile) but this requires more logic... so compromise... :) profile (authz)
+Are you sure we need that condition? Are you able to cover it by test case? The null-test was not present before and I can't see any test related to that.
+You can use GenericMath.DBL_EPSILON here.
+Why is this removed?
+DEFAULT_HTTP_TIMEOUT?
+It seems that throwing a generic Exception is not a good practice in Java. Is there a strong reason for that?
+Let's use debug level instead of info.
+Instead of repeating the addition assign it to a value on the stack.
+Move the logic to configAccessor.
+Nitpicking, but I'd prefer creating the builder with  org.infinispan.client.hotrod.configuration.ConfigurationBuilder clientBuilder = HotRodClientTestingUtil.newRemoteConfigurationBuilder(hotRodServer);  and then setting the marshalling. Same in RemoteStoreMixedAccessTest
+There is no call to this method outside TableManager, shouldn't we change it to private?
+Magic number <LINK_0> Try to use a constant for the timeout. Review the constants in the project.
+Same here. Should this be a Mono instead of a PagedFlux as it's returning a single message?
+Don't we need to return something like -1 in the null case (i.e. when the type is not in-house one)?
+Why is there a fromByteArray method? Why not call the constructor directly?
+For each?
+This method is duplicating logic which is already contained in ZooKeeperLeaderRetrievalService.nodeChanged. I would suggest to factor out a method notifyIfNewLeaderAddress(String newLeaderAddress, UUID newLeaderSessionID). notifyLeaderLoss could call this method with notifyIfNewLeaderAddress(null, null).
+this("Safety Command")
+You could remove method("POST") as you set the HTTP method on create
+Same here, no need a transaction
+HQL/JP-QL
+Could you please use DecisionTableInputType.XLSX
+Optional.ofNullable could be used?
+Ingest modules need to throw IngestModuleException if there is an error in startUp, with a user readable exception message, since it is displayed to the user. You need to wrap the NoCurrentCaseException in an IngestModuleException and throw, not log here.
+"notation".equals(resource.getURI().fileExtension()) to avoid potential NPEs.
+Encapsulate this here. Should be returning a MapView here.
+we need a gauge metric here to ensure the thread is running
+Use context.getApplicationContext() to ensure the class can't leak any shorter lived contexts that might be passed to it (it's always fine to hold onto the application context, since it's expected to be around for as long as the process remains alive).
+-1. This means input does not get read.
+I barely understand how this is working, Content-Type is a header present in the response how can this affect cache negotiation?
+suggestion return Arrays.toString(value);
+I would suggest using the related constant instead.
+name could be more descriptive
+Returning a class instance _or_ a null? This calls for an [Optional](<LINK_0>!
+could uh, use checkState(false, "") instead of a lambda ;)
+Do we need some kind of synchronization here, or will next() never be concurrently called from two separate threads?
+If you remove the condition, the retry analyzer instance will never be null. Better: DisabledRetryAnalyzer should be the default value if clazz == null unless you think the null value is important.
+This could be confusing here. How the user know the all fields?
+@drcrallen I tried a hadoop batch ingestion job with this patch applied, and the task didn't pick up my hadoop-client jars. Passing in the directory:  new URL[]{extension.toURL()}  doesn't seem to get the jars picked up, I had to change the URLClassLoader creation back to the original implementation with a url for each file to get the task to proceed.
+Please remove an excessive space character.
+Added because?
+To defend against catastrophes from bad future refactorings, I would recommend extracting a protected method for the computer's log directory, to make it clear that what you are deleting is specific to this computer only.
+seems like synchonized is not needed here, given increment/decrement already protect
+Same here, if it's not supported we need a test checking that trying to set indexNullAs fails.
+Should we use UTF-8 instead of default character setting?
+Is it really worth checking before setting it?
+You should go one step more in simplifying the rule: Change this method to return a boolean: hasNoDefault(switchStatementTree)  return allLabels(switchStatementTree).noneMatch(SwitchLastCaseIsDefaultCheck::isDefault);
+suggestion if (this.currentTask != null) checkAndRethrow();
+How does this work for (ridiculous) timezones with 30 or 45 minute offsets form UTC?
+This method can be static, as all the methods it calls.
+Shall Alter database to add source_of_replication DB property and see if Dump succeed afterwards.
+final
+Pretty minor but would you mind adding some parentheses around the arithmetic? :) Is it possible to have a divide by zero error?
+I see what you mean, the link will refer to the ID, and if ID is integer, as opposed to the new UUID, then the link will be limited as new objects will not have old integer ID, but all objects will have uuid. To ensure compatibility, perhaps we would need to leave getLink to return the integerID, but getLinkUUID could use the new identifier. (this is because we don't otherwise have rest versioning, and don't want to break contracts).
+minor: don't need this. qualifiers
+The two methods above are the same except for the first line...perhaps reuse the code instead?
+Parameter should be a string instead and be called label
+Braces on following line
+If this should never happen throw an IllegalArgumentException instead.
+I see what you mean, the link will refer to the ID, and if ID is integer, as opposed to the new UUID, then the link will be limited as new objects will not have old integer ID, but all objects will have uuid. To ensure compatibility, perhaps we would need to leave getLink to return the integerID, but getLinkUUID could use the new identifier. (this is because we don't otherwise have rest versioning, and don't want to break contracts).
+I believe this whole catch block can be removed. The standard WaitUntil handling will be sufficient I believe.
+We don't need to use System.out.println() here. These two lines should be assertTrue("Expecting: " + expected + ", got: " + e, e.getMessage().contains(expected));.
+make a helper method for this? closeUncaught(out) or something alternatively the close method could throw an IOException
+you could be more specific and check instance of Function0 maybe?
+For loop?
+After checking how MimeBodyPart is implemented, it might make sense to tweak this to:  java return String.format("%s; charset=%s", mimeType, MimeUtility.quote(charset, HeaderTokenizer.MIME));
+style nit: we don't use braces around single line blocks
+Apply changes similar to setVisibility.
+A message might be helpful
+you need call addColorSettingsListener on the new instance.
+can we add here more descriptive name instead of element? Maybe parameterInput or input or field?
+Just in case, please wrap with Collections.unmodifiableCollection()
+Define "data-agent-conf.xml" as a constant
+Did you intentionally ignore the patientProgram parameter?
+It would be cleaner to directly format the instant. Java 8 has a new formatter for temporals.
+log.trace if at all
+Maybe /druid/indexer/v1? (/mmx/ may look weird in open source)
+can just be return pattern.matcher(value).matches();
+Use logging framework instead of printing to stdout
+This updates all gauges when any of these gauge is visited. It'll be better to override getValue() instead, and only calculate the percentile for the gauge currently being visited.
+Be explicit about e.getMessage here? (and perhaps enclose it in double-quotes)
+Padding should probably be extracted in a separate method. (I could also argue that getting the int value could be another method, but I sense that there might be some opposition there).
+This can just be catch Exception.
+suggestion return Optional.ofNullable(getLhsType()).map(s -> s.getTypeImage() + ".").orElseGet(() -> Optional.ofNullable(getAmbiguousLhs()).map(s -> s.getName() + ".").orElse("")) + getImage();  and avoid computing the ambigousName unless necessary
+An optional of not null is a bit painful. Use another constraint perhaps? Do we have one test on the payload business btw. (applying it to the wrapper)?
+Maybe wrap around a [CountDownLatch](<LINK_0> instead?
+Why this change?
+This must be unique, as it is the ID jclouds will try to find when calling the computeService.getImage(id) method. Is this label unique?
+Something like this.
+several style nits: spaces before {, before variable names, between functions, etc.
+suggestion throw new IOException(MESSAGE, (Exception) DummyClassLoader.apply(TestCallable.class));
+> return new String[] { resource + "/.default" }; [](start = 7, length = 48) Should this use the DEFAULT_SUFFIX constant above?
+Move this validation to PluginProfileService.
+side note to bringing in this dep, installing this module would also likely start up a number of pollers/db connections/zk connections/etc which we don't want
+LinkedHashMap please <LINK_0>
+should be setSucceeded(true)
+I would replace this by System.nanos() instead of doing a call to nanos. To prevent running out of inlinining budget.
+Same here.. we should not have these checks here.
+Why is it public?
+Should return ReadOnlyArray.
+ImageData for current image needs to be updated in the array?
+I would prefer to move this line in the if branch, so it is more clear, "return element" is done if a managed provider is available only
+I think only one impassable entity should be allowed on a Square. Exception otherwise.
+you have to add a canDoAction message if you fail canDoAction
+Program to interface, not to implementation - please change return type to Map<String, Object>
+the results changed?!?!?!?!?! this is not good. We need to do a seek before, we cannot rely on a "fixture" that changes depending on the order or the tests.
+there is Long.hashCode(long value) method.
+can it be made in one line?
+I think you want logical AND, so double ampersands. Can we use !license.isEmpty && !licenseShortName.isEmpty && !licenseUrl.isEmpty() instead?
+is logics correct here?
+ChannelClosed needs to be added to (though not strictly necessary)
+can move ListVersionView object construction in ViewFactory? this will replace publicBodiesConfiguration dependency by ViewFactory to make it consistent with other resources.
+This sets the system property to the empty strings but does not remove it. To make extra sure to leave nothing behind, best to use [clearProperty](<LINK_0> instead.
+rename to child or childItem
+That is not clear, why do we have "Save" is not adding alarm item is enough? Actually, it is saved in Realm but not scheduled in Alarm manager?
+should we use ObjectUtils.nullSafeEquals here as well?
+I don't see what is wrong with the existing way to remove a channel other than an extra hash lookup. With Java 8 upgrade, it should be changed to physicalNodes.removeIf(pn -> pn.getClient().equals(client));
+Move this else if just after the } above
+If you'd like to get the String value of something and want it to be null friendly you could always try this:  java String s = String.valueOf(obj);  I believe String.valueOf(obj) looks like this under the hood:  java public static String valueOf(Object obj) { return (obj == null) ? "null" : obj.toString(); }  Applies file wide :neckbeard: #notadealbreaker
+You should clear the set after the scan to, to be sure that references to the IfStatementTree are not kept for the whole scanning process. Actually, I think I'd prefer to avoid using a set altogether by using the parent to retrieve the else keyword (i.e. if the parent is a IfStatementTree and current if is the else statement of the parent). What do you think?
+Is there any particular reason to call getMuteReason instead of just checking the value of muteReason directly?
+Why not .filter(exam -> exam.getPeriod().getPenalty() != 0)?
+I'd like to consider this as a completeExceptionally case. It doesn't need to return anything.
+This is a test for the userRepository in my opinion and should not be here.
+super() can be spared here.
+I think it should return Array here.
+This test would also pass if uaMap was completely empty. Can we instead assert the presence and format specific keys in the map, such as bindings_version? I'd rather test for the expected behavior versus "make sure no keys contain a dot" which feels like a tautology.
+Shouldn't this message be changed to "Should be 500"?
+Prefer storing the compiled pattern as a constant for this class. Otherwise, we may unnecessarily recompile this regex.
+nit: param doesn't need final
+I want to method accessor to be package private :eyes:
+Add log.info "connecting to ATSD at host:port"
+rename to comply java standard name convention. validateEmail
+70-75: extract method (see following methods)
+Maybe wrap in an immutable map.
+Given that there's at most 36 possibilities, it's probably best to cache the immutable version.
+Current code doesn't detect port 8080 is used by my local EAP. The only way it works for me is if it's implemented as  java try (Socket socket = new Socket("localhost", port)){ return true; } catch (IOException e) { return false; }
+Why is this still using the Id?
+Unfortunately, you cannot delete this method. This is how we initialize our Indices when they are created via reflection in the AccumuloRyaDAO.
+rename
+Should we return immutable list here?
+REEEEEEEE STREAMS suggestion if (ess.getSettings().getPerWarpPermission() && sender.isPlayer()) { List<String> list = new ArrayList<>(); for (String curWarp : ess.getWarps().getList()) { if (sender.isAuthorized("essentials.warps." + curWarp)) { list.add(curWarp); } } return list; } return new ArrayList<>(ess.getWarps().getList());
+this should be config.get("path-style-access", boolean.class, false)
+This method should first attempt to get it's result from a file stub.
+Please add ioe to the exception.
+Ahhh, the speaking check is here. Calling speakNames() to have to sometimes not speak names is confusing and wastes a method call. I think we should just pass the boolean into presentation manager.
+This doesn't honor the contract of an iterator's remove. In fact, i'm not sure you can support this atomically with only a single file.
+Static string constants
+Why create so much strings ? ", " + "JdbcRuntimeInfo: {" + "driverClassName:"
+Should have a space after add
+I'm wondering why we even need this class; can we not simply add a boolean property to the base class called "appendPartitionId" ? Also, the ticket description says "If SingleFileOutputOperator is partitioned into **more than one** physical instances then it should append partitionId to file name" (my emphasis), I don't see any check for that condition before appending the partition id.
+Lets leave this get() however as its part of the public NoteMap API and some callers may prefer this variant.
+Is it possible that the environment variable is not set?  if (ImplUtils.IsNullOrEmpty(connStr)) { // throw here. }
+As iirc a HC can not spontaneously become a DC, I wonder if we could cache this data. Otoh, this is a relatively light-weight call and not done often, so probably does not warrant the hassle of cache invalidation checks.
+It would be nice to change the parameters class so that it uses List instead of ArrayList, then you could use just "toList".
+collect to a set that can preserve order?
+Once again, just use getMonth(calendar), which embeds the knowledge of the +1 difference in its body. DRY.
+CheckReturnValue?
+this doesn't look correct. You're doing this ONLY when the exception is a ModuleException. You're ignoring all subclasses (which is what's more frequently used).
+Optional.map
+remove
+Add here if (outlinePage != null) { outlinePage.setSelection(new StructuredSelection(selected)); } to make the normal outline page follow the selection in the quick outline.
+Is there a subclass? I'd like to see these protected methods be private if possible.
+Should check if the Counterparty that should be updated belongs to the logged AppUser
+Add not-null check here.
+Why change the name the property? Accident due to mass refactor/rename with IDE?
+Let's use the same logger we use for the rest of Baragon rather than System.out, for example <LINK_0>
+This is not working on my system as I have **space** in the path:  java.io.FileNotFoundException: /.../tc9.0.x%20(trunk)/.../org/apache/juli/logging-non-rotatable.properties (No such file or directory) at java.io.FileInputStream.open0(Native Method) at java.io.FileInputStream.open(FileInputStream.java:195) at java.io.FileInputStream.<init>(FileInputStream.java:138) at java.io.FileInputStream.<init>(FileInputStream.java:93) at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:469) at org.apache.juli.ClassLoaderLogManager.readConfiguration(ClassLoaderLogManager.java:309)
+immutable copy!
+@ribhavsharma please take a look at [this](<LINK_0> You will have to use the clone() method while returning the value which will also fix the travis-ci build failure :)
+Better to return "";.
+Is it really filter name?
+Currently we know that close doesn't throw, but just to make the code future proof we can use guava Closer here to make sure that both readers get closed.
+lockRefreshToken should be set to Optional.empty() here, otherwise isHeld() will still return true. There should be a test for this.
+We don't need this, the ConfigSaved would handle this already.
+![Codacy](<LINK_0> Issue found: [Possible unsafe assignment to a non-final static field in a constructor.](<LINK_1>
+Missing codes.
+This warning suppression can be removed if the below line is changed to PartitionAttributes<String, String> attributes = new PartitionAttributesFactory<String, String>()
+The binding shouldn't refer to the currently selected entry because this might change in the future and then the binding needs to be reevaluated. The following should work suggestion ObjectBinding<BibEntry> entry = Bindings.valueAt(selectedEntries, 0); return Bindings.createBooleanBinding(() -> { if (entry.get() == null) return false; else return entry.get().getFields().stream().anyMatch(fields::contains); }, entry, entry.getFieldsObserable());
+Can you avoid duplicate code here? (PreferenceManager.getDefaultSharedPreferences)
+We are always in a case of an AbstractDiagramElementContainerEditPart host here?
+EchoParametersDao.getEchoParameters() already returns a list.
+We can use guava Closer to make sure we close all of these clients (just in case if one of them throws a runtime exception in the middle of the loop)
+This might throw exception
+Your best friend Joda has already solved that for you:  java final Duration duration = new Duration(DateTime.now(), DateTime.now().minusDays(1)); return duration.toStandardDays().getDays();
+Does it still make sense to use forkJoinPool? The tiles are no longer downloaded at this point, so it would add an overhead to run this in parallel.
+What you should be sending is the cluster compatibility version, not a constant version.. You could send the host's version but that would be confusing to the users. The norm in oVirt is to restrict version specific features by either cluster or DC - since this is clearly related to cluster (and not related to storage), the restriction should be by cluster level.
+Lists obtained from a message are immutable. No need for extra copying.
+I don't see where we handle HibernernateException.
+@piddubnyi full path LastModifiedCachingWire.LAST_MODIFIED
+suggestion return new SearchHitsImpl<String>(hits.size(), TotalHitsRelation.EQUAL_TO, 0, "1234", hits, null);
+Could use assertEquals?
+I think it would be safe to use the ArticleIngestion object's timestamp as the return value here. Because the previous version did return a timestamp for caching purposes, this may be important enough to avoid degrading.
+Shouldn't this be set to false?
+String indices = index != null && !index.isEmpty() ? index : "_all"; SearchRequestBuilder searchRequestBuilder = client.prepareSearch(indices) .setTypes(type) .setSearchType(SearchType.QUERY_AND_FETCH) .setScroll(new TimeValue(scrollTime)) .setQuery(buildSearchQuery()) .setPreference(shardBuilder.toString()) .setSize(scrollSize);
+secretLabels = Arrays.stream(labels) .map(l -> l.split("=", 2)) .collect(Collectors.toMap(p -> p[0], p -> p.length == 1 ? "" : p[1]));  ?
+Fair enough. I don't think it was meant as a cost saving thing, just to make it easier to understand when something did or did not have caught-up clients. If you find this logic easier to follow, go for it
+should be VOT.Storage
+No need for the *31 here.
+nit: Maybe more explicit:  Only function definition classes (classes annotated with @ScalarFunction) can define SQL functions via non-static java function. Function set classes can only define SQL functions via static java functions. Thus constructor in function set classes is used to define SQL functions.
+You can use CollectionUtils.toImmutableList
+Couple more static imports here?
+This should be a PrestoException(NOT_SUPPORTED) error, since the operation the user requested is not supported. HIVE_METASTORE_ERROR is used when there is a (normally transient) metastore error.
+replace this with  @Override protected void initServices() { latoken = RestProxyFactory.createProxy(LatokenAuthenticated.class, getExchangeSpecification().getSslUri(), getClientConfig()); this.marketDataService = new LatokenMarketDataService(this, latoken); this.tradeService = new LatokenTradeService(this, latoken); this.accountService = new LatokenAccountService(this, latoken); }
+Should be ClassNotFoundException. Catching all exceptions and disposing them may miss unexpected exceptions.
+Can StringUtils.fromUtf8 be used?
+Methods in Preconditions should be imported statically
+StringPool.EMPTY instead
+Why are you looping here? Can you give a use-case?
+Do we really want to always assume Latin-1?
+Why don't we make inDegrees to ConcurrentHashMap also?
+Is it possible that nothing is selected? If so, the return type should be optional (-1 is kind of ad hoc). If it's not possible, there should be an assertion failure.
+setSelection takes an ISelection, no need to cast what you get from the viewer. you also do not need a local variable
+I am still in favor of removing this static. I don't think its necessary. I think if tserver wants to keep one instance, then it should keep a reference to it. All the current static stuff we have is troublesome and we would like to move away from it. Could rename this method to newInstance if you drop the static.
+This should be part of the try-with-resources block.
+Item dropped should be a hopper
+is this still needed?
+The this. in getters are unnecessary too.
+assertTrue or assertFalse but never equals. Also add a message so if it fails you know what has failed.
+Missing types
+I think we should separate concerns more clearly here: - FormValidation ensures that the value in fields make sense and if not display a meaningful error message. - DatadogClient checks connectivity to the provided endpoint for example this function should only check that the string looks like a valid url, not that the url is a datadog one, nor that it is reachable.
+Single or double pipe?
+Can we make logger a private static final
+what does compare and hascode mean for datanode if they have different ssl ports?
+why this change?
+Currently we don't have PERUNOBSERVER role assignable by config to specific credentials (unlike perun admin). This mean, we will always have User, related to this role. So anywhere, check on SELF (without specifying user or where passed user is only own) will let PERUNOBSERVER pass too. Only if it would filter result, we would have to separate them. What do you think @stavamichal @licehammer @martin-kuba ? Will we need PERUNOBSERVER role for accounts without User in Perun or not ? I suppose not, it is always safer to have account with contact info etc.
+type might not always be a Class. If the API method returns List<User> this will be a ParamterizedType which isn't not a Class.
+should be debug and consider moving logging to checkData()
+please keep style changes separate from PRs (or better just don't create them at all)
+Please extract this string
+static imports
+does this have to be a list or can it be an iterable?
+innerInterfaceOrClass checks parentType, but in line 236 similar check is performed. They can be merged in one method
+createObjectFromMap(name, NAME_TO_FULL_MODULE_NAME); should be the first thing we try. It will be the fastest and the most common scenario. pure createObject(name) should probably be used last when user supplies full package as name. Order of finding module should be, imo: 1) our module map test 2) 3rd party map test 3) full package (or raw) test 4) fail. We can probably discuss skipping 1-2 if given name has a period in it. 3 is only really needed if we don't examine maps for the full package. I don't really see a benefit from doing this.
+This method is duplicating logic which is already contained in ZooKeeperLeaderRetrievalService.nodeChanged. I would suggest to factor out a method notifyIfNewLeaderAddress(String newLeaderAddress, UUID newLeaderSessionID). notifyLeaderLoss could call this method with notifyIfNewLeaderAddress(null, null).
+What do you think about changing to stripContextPath(request)? So stripContextPath ask for contextPath and requestURI internally.
+extension can't be empty or /
+I understand the purpose of the change is to make sure we streamline the value change in the class variables to happen as late in time as possible, and issue the notifyDatSetChanged() signal right after that. Can we then enclose these 3 below lines in a synchronized block to make sure these 3 are packed together in an atomic action?
+use 'waitForElementByElement(newestVideoDeleteIcon); and use 'waitForElementByElement(deleteConfirmButton); before each click
+Are there mandatory parameters which require validation?
+This won't invoke the additional interceptors, is that okay?
+This block can be omitted as it will always return false (id cannot be null here) and behaves the same as id.equals(null)
+optional suggestion: since we're extracting helper methods... it's mostly "false * 4" or "true * 4", so consider adding e.g. whenEverythingIsInitialized and whenNothingIsInitialized.
+Why don't we make inDegrees to ConcurrentHashMap also?
+Hey @oguzkocer , should this array include VIEWERS_TABLE as well?
+I think it makes sense to use builder and return ImmutableSet...
+Maybe we should use a logger here, and print to a different file? In case there are issues with updating and we need to diagnose.
+Reads nicely if this is written as if (isBinaryValueAvailable()) {.
+oh.. ok actually looking at fields, looks like this object is somewhat mutable. I think this is a separate issue.
+maybe we should add a log here so we know that nothing has been updated to the corfuStore and not that it is complete necessarily.
+nit: I'd prefer warn, this is probably not super actionable for us?
+Why not create the taskExecutionDAoFactoryBean in the ctor?
+if we continue with this convention, please init to true also here
+You probably want checkNotNull here - assertNotNull is no op if assertions are disabled resulting in a NPE below, checkNotNull will always fail on null leading to a consistent error message.
+can be replaced by List.of
+why not an empty map?
+Rather than calling run here, make run() call out to a no-args method like this: java public void onClick(View view) { // ... if (id == R.id.button_done) { nextWithEmailAndPassword(); } // ... } // ... @Override public void run() { nextWithEmailAndPassword(); } private voidNextWithEmailAndPassword() { next(mEmail, mPasswordField.getText().toString()); }
+Before go through the loop make sure that position and symbol parameters are not null.
+What does the magic number 2 mean?
+name it github config
+Idem this could be handled with an Optional...
+Wouldn't this test be more "accurate" if the only thing that changed in each entry was the timestamp (and not the value)?
+Call I18N.getString(String) (there are no parameters in the resource messages).
+This logic needs updating to handle non-deterministic filters. See latest BooleanSelectiveStreamReader.
+I think the annotations should be on separate lines
+remove static
+Instead of FileHandler, you should use the PropertyConfigurationLayout to save it to a FileWriter.
+I believe this line is incorrect and should be removed
+hasAnnotatedAllParameters is already checked in the super class, right?
+you can either remove else or add pair of curly brackets
+Is there a chance of a NPE? could be getFile() null?
+@dmzaytsev let's inline this
+Add { and }.
+Debugging code?
+same here for node
+return id;
+Should be added the Override annotation.
+Maybe take the opportunity to set index = null here?
+Same as above: I think it is clear enough without the id variable same for below too
+I think it will be better to close the other store as well.
+Check command and status null.
+Let's just use ParseObject.createWithoutData(String, String) instead here so it'll be more concise.
+Does TYPICAL_LOG_MESSAGE need to be a local variable? You can hard-code /typicalLogMessage.json here if only used once.
+null != settings
+we could use reduce instead of fold, like:  java return Stream.rangeClosed(1, n) .map(BigInteger::valueOf) .reduce(BigInteger::multiply);
+emptyCollectionWhenNull does not need to be serializable... Use thenApply instead of handle and return rather Collections.emptySet()
+suggestion return new Intent(context, CustomTabsManagerActivity.class);
+Should be here ac.stateChangingCheck(); @zlamalp?
+There's a BIgtableExtendedScan that needs to be considered here. This approach doesn't seem like it would work.
+@Before / @After could overwrite System.out :-P
+Which type would be assigned in this case?
+You could just use Closeables2.closeQuietly(azureBlob);
+The original version is more precise?
+reference equality?
+M-m-m. Seems for me we don't have here in this application context any other listeners. Am I missing anything ?
+The %2$s is positional and needs to be adjusted since payload type moved from position 2 to position 4. Or, alternatively keep this the same, but move getQuoteString to the end and use %3$send%3$s above rather than %send%s.
+should atleast check o being non-null and instanceof IdentityExtractionFn .
+Can we please add limit to the exception message? So it will be much easier to see the problem!
+This was purposely catching both checked and runtime exceptions, hence catch of Exception, because if this were to have a fundamental flaw causing a runtime exception it could conceivably kill all sling resource fetches.
+I would feel more comfortable with this if you did something like throw an IllegalArgumentException if !ref.startsWith(oldPrefix)
+nit: maybe merge the lines as the formatting looks a bit strange.
+@inverno Why public?
+can we use sysprop or something for url?
+use Long.valueOf() instead of new Long() - always for performance reasons
+Is start check needed? Could it be problematic (somehow delay/miss the start when it should be immediate)?
+Think this needs to go right below line 91. parseResponse can return null (line 133), which will cause this future to never complete.
+Why we return AsyncClient here?
+Not sure about coding style, but I wouldn't use an else here ("else after return").
+Nit: it is a good practice not to reassign the input parameters so I would change this to something like the following: Map<String, String> mapToUse = (map == null) ? emptyMap() : map; JSONObject pathPartMap = new JSONObject(mapToUse);
+How about AM's memory mentioned at Line 111?
+the idea of using a builder is a bit off here :-)
+if you are synchronizing whole methods on the same object, you might as well use the class's monitor, by using the synchronized keyword in the method signature (public synchronized void ...) This avoids extra sync objects (and saves one level of indentation!)
+@weisebrazil all indentations should be 4 spaces, not 8.
+If environment accepts null, mark it as <code>@CheckForNull</code>
+Create date once and use it twice. That way the acceptance time will be the same for both.
+From reading this line I'd expect this test to pass. We should probably name this CONFIG_WITH_KEYSPACE_2, or make CONFIG_WITH_KEYSPACE receive KEYSPACE and compare it to KEYSPACE_2.
+no braces around single line block
+Let's do return fDetailedLoad; even if it is always null for now
+using compareAndSet() might be better since you need not execute the rest of the statements if this is already false, right?
+To clean up properly, please place the Builder in a try-with-resource block java try (Builder b = new Builder()) { // test }
+what about location ? we do not need LocationSerializer ?
+Used to be fileSystem.deleteFileOrThrow underneath.
+Shouldn't we call removePropertyChangeListener, BEFORE we call doEdit, since doEdit will change the current object?
+I think we should at least log this exception here before throwing other one
+I believe this method should be getServerMetricConf()
+This is a local variable, should be camelCase not fCamelCase
+Sort of believe We should have MetricManager in parameter given this case.
+log message is about "attach" in the "detach" method. this is misleading.
+This is duplicated
+What do you think about making more general methods like: verifyTopLeaderboard and decide what selector to pick inside this method? Based on wikiPage object/browser info.
+Why include the name in the comparison? fullName should be enough.
+Check if byte[] b is null.
+SHOW+DATABASES? looks strange.....
+Same as above, this looks like an error.
+targetValues is a List<String> so we don't need to use toString. Could use String.join(", ", targetValues) instead.
+events can't be null
+Would you mind if we kept our privates on bottom? I'm a class client (reader) of more code than I author, which means the most relevant source is almost always the public API. It's quicker to get to on top since codes read from top to bottom.
+The base implementation should throw UnsupportedOperationException, since the feature is always provided by an overriding method in a derived type.
+should be edit
+why don't you just use a node here that does the right thing? There should a node to read outer, no need to duplicate that logic here, or is it somehow special?
+RuntimeException would be sufficient
+This change could break people.
+simpler:  return (this.partitionSelectorClass == null) || (this.partitionSelectorExpression == null);
+Let's rename locationModule to just module. Then we can bind SessionPropertyProvider inside the module. (The name is already bad, as it's no longer for location. I missed that when converting to Drift.)
+i would add additional check to make sure we will never make it to more then 100 :)
+Now we have this constructor , what is the benefit of having default constructor and setPath() method explicitly .
+Why U don't want to consider id in equals and hashCode ?
+Put the close() into a finally block so that an attempt is always made to close the session, even on rollback fails. If closing the session fails, there's not really anything we can do -- log and move on.
+We don't need to cast to int.
+DoubleMath.isMathematicalInteger?
+Should be public.
+In fact, I don't think it's a good idea to allocate a Long. This function should be fast. Thus, a three branch if seems to be the solution. if (a < b) ... else if (a > b) ... else ... The domain trick works to avoid the "sign" hack.
+throw exception
+I understand that this popup works only for VM and not for pool, so the fact that model.getModel().getVM() returns null for pool is not handled here. But still, it is an invariant for this class that it works only for VM and it should guard it. Maybe for easier debugging in the future I would start this init method with something like if(model.getModel().isPool()) { throw new IllegalArgumentException("The console popup can not be used with pool, only with VM") } or something like this.
+System.out.format instead?
+true=>false
+I don't think we ever use this method again
+I think the code will be easier to understand like that: java Object object = getInstance(); if (object == null) { clazz = getConstructorOrMethod().getDeclaringClass(); } else { clazz = object.getClass(); } ITestOrConfigurationclassAnnotation = getAnnotationFinder().findAnnotation(clazz, annotationClass);
+@paulodamaso the braces and return are not needed here
+We only set thisReadSequence and mateReadSequence in the ReadHead, right? Why don't we have set(long uuid) for those kmers which aren't ReadHead?
+public?
+Also, since RxJava is used here otherwise.. this code should follow RxJava patterns. Basically, instead of this codeblock, use something like  java metrics.filter(m -> publish.isPublished(m.getMetricId())).map(pendingMetrics:add)  Or make it even prettier with some more reactive handling.
+Null comparisons can be replaced by UtilMethods.isSet(object)
+I am wondering if we should move the project towards scala or kotlin to make the data objects less verbose
+Same as above. this is deprecated and should no longer be used.
+reuse getAcceptableTokens()
+Replacing "\" does not require regular expression, use replace("\\", "\\\\\\\\") or replace("\\", "\\x5C") instead of replaceAll().
+Use getSimpleName instead?
+For increasing stability "wait" is better to use than "Assert":  waitUrlStartsWith(testRepo.getHtmlUrl()); } private void waitUrlStartsWith(String expectedUrlPart){ seleniumWebDriverHelper.waitSuccessCondition(driver -> seleniumWebDriver.getCurrentUrl().startsWith(expectedUrlPart)); }
+could this hide bugs? Would it make sense to throw an exception or simply remove the check? Also because 0x0 is a valid code point this makes this return value a bit ambiguous. I'd be in favor of just accessing the array and let the JVM throw an error if this is possible.
+Hum seems we are already setting this listener
+nit: you can merge both lines above as checkNotNull will return the given argument
+What do you guys think about setting this method to Evolving, at least for one release.
+remove 'driver' parameter (yes, a know you didn't write this line, but please change it :) )
+IMO it's better to use different values, e.g. 0 and 1 to be sure, for example, that the "delegated" method is not simply using the first parameter twice...
+use execute i mentioned above
+Looks like both XmlTest and XmlSuite could share this code. Maybe extract it in a common parseParallelValue?
+Or even better, this.mName = Objects.requireNonNull(name);. To be check everywhere else.
+Why do we print a secret systemUserPassword here?
+Create an io.realm.internal.objectserver.SessionManager and move sessions there? I am quite uncomfortable to expose removeSession() to public.
+Item dropped should be a hopper
+Somehow orthogonal to this change, we could add the check for the isProcessingOff -- similarly to DefaultPersistentBus#initQueue
+Why do we use iterators? I know the base class does, but why in the first place?
+Why the change? This is going to cause a memory leak if the SaveSmartLock fragment is rotated since it's a setRetainInstance(true).
+String indices = index != null && !index.isEmpty() ? index : "_all"; SearchRequestBuilder searchRequestBuilder = client.prepareSearch(indices) .setTypes(type) .setSearchType(SearchType.QUERY_AND_FETCH) .setScroll(new TimeValue(scrollTime)) .setQuery(buildSearchQuery()) .setPreference(shardBuilder.toString()) .setSize(scrollSize);
+Is this already protected by a lock?
+I would suggest that it checks the count of the entries to see if it increases one after the recovery happens.
+If createParams should always have commonParams and commonServerParams, why not just define it that way to start with? And I think you could make the collection a static final variable at the class level.
+@cvrebert maybe MkIssueEvents.class.cast(?
+Remove useless assert
+don't use finalize, it's a bad practice
+This check will be needed in case of every single widget button. If so it would be better to create our own WidgetButton class that will extend com.google.android.material.button.MaterialButton (then you can use it in your layout file). In such a class we can then override:  @Override public boolean performClick() { if (MultiClickGuard.allowClick(getClass().getName())) { return super.performClick(); } else { return false; } }  what do you think about this approach?
+use the constant defined earlier (moreover, aren't jdo connection options available from some sort of options class)
+Do we want to include data= (since it's required) similar to how we include connection= for SQL? It would also be nice if the cursor was placed at the end of data= (as we do for connection=)
+Should be sufficient to synchronize on entityBacklogs, right? Same applies for onChange method.
+Can we rename from exonCollection to something more appropriate, like targetCollection?
+@ILikeToNguyen Why the change in visibility here?
+can you explain why this change ?
+can't we just store filename = String.format("%s.%s", filenameBase, "values"); and not have makeFilename called in multiple places?
+It's good practice to use getters (like getPerunBl()) than directly accessing attributes.
+- [ ] You may select log level debug or trace. Because the developer intensionaly sleep thread and InterruptedException has no meaning here.
+I am a bit confused that this check will be called on almost every line of code.
+shouldn't we return a new or immutable copy of our internal list? just returning the list allows plugins to fully modify the list. @WonderCsabo wdyt?
+Is there a need to have log.debug within transaction scope?
+I see you're against anonymous classes :) I don't care either way, but maybe you could make the toIndexFieldConverter and fromIndexFieldConverter methods consistent with each other?
+please decrease severity to "debug"
+Here and below, since there are no bodies, you can just use {} instead of {\n\n}
+public?
+Consider removing the "Optional" part. Seems better to return an empty map, if not present.
+String.format("%s", s) is s, therefore filePath() will always return fileName, so it is obsolete, and we should consider renaming fileName to filePath.
+Let's rename locationModule to just module. Then we can bind SessionPropertyProvider inside the module. (The name is already bad, as it's no longer for location. I missed that when converting to Drift.)
+I would add a check here: if the ID contains the suffix, throw an IllegalStateException or InvalidParameterException, otherwise, there's a chance that you'll have an ID like abc-client-client, which is never appropriate.
+not all listener
+@erikdw MESOS_SANDBOX is set by Mesos correct? Wondering if we should override System.getenv("MESOS_SANDBOX") with logdir only if storm.log.dir is configured?
+Same here. I dont think we should be throwing exceptions.We should instead be having empty implementations.
+Lol! You're going to remove that, right :)
+This can be java return valueOf(value.toUpperCase(ENGLISH));
+Wouldn't it be better to give the names as part of the enum constructor?  Java STRING("String"), LIST("List"); private final String _name; private RemovedMatchesType(String name){ _name = name; } @Override public String getName(){ return _name;}  The less logic, the better. We get the added bonus of not having to change the _if_ to _if-else_ or a _switch_ if other types are added.
+Maybe for cases like this where the list is only consumed once it would make sense to add a mapLazy that is based on something like this: java static class LazyMapList<I, O> extends AbstractList<O> { private final List<I> list; private final Function<? super I, ? extends O> mapper; public LazyMapList(List<I> list, Function<? super I, ? extends O> mapper) { this.list = list; this.mapper = mapper; } @Override public O get(int index) { return mapper.apply(list.get(index)); } @Override public int size() { return list.size(); } }
+Some proxies may not grok the comma-separated headers; any reason we can't just do Cache-Control: no-cache here?
+I think we need to check validation of the state transition diagram. Let's handle it in a separate issue. Please create an issue for this.
+Are consecutive reloads necessary or will be one reload at the end sufficient?
+These 2 conditions can be merged into 1 condition
+upt.unifyGraph(graph) is double code. Better use this structure: new ReferencePositionTraverser(reference).referenceMapGraph(graph);. The graph = isn't needed.
+Initialize with 1 here, remove assignment of 1 in all the tool data building. As long as there is no other value set by something else it should always be 1. Also rename it to attackSpeedMultiplier, to not confuse it with the actual attackspeed stat of the tool (which is the product of the value + the tools AS)
+s/policies/policy
+The reason this is here is so that it doesn't get needlessly wrapped in a RuntimeException in the next catch block.
+Should we break the for-loop early if the condition is not met?
+I think it's safe to remove the local recovery info in the caller thread and then return the stage. Slightly off-topic, I've been looking at RecoveryAwareTransactionTable.removeRemoteTransaction and it seems horribly inefficient. It should only iterate over the transactions when there the GlobalTransaction is not available.
+entry
+delete
+directly return
+Do we need to make sure these file names are also Windows-compatible? If so, we should include a few more characters to the list. - Linux/Unix: / (forward slash) - Windows: < (less than) > (greater than) : (colon - sometimes works, but is actually NTFS Alternate Data Streams) " (double quote) / (forward slash) \ (backslash) | (vertical bar or pipe) ? ( question mark) * (asterisk)
+Default should be false
+return Promise just to symmetric with start()...
+This method is no longer waiting for the refresh operation to complete. Not sure if that is important for the test flow or not.
+This will probably be permanently unsupported.
+should return false if the validation fails
+The operator should be && not ||
+please use (1 << priority) instead of priority + 1
+looking at the gson code base, remove also could return null if element not exists hence we might want to guard aganist NPE here as well.
+what about using org.apache.commons.lang3.BooleanUtils.toBoolean(String) here?
+These implementations are fine, but I wonder if the code wouldn't become a bit simpler if the defaults were stored as String values, and instead of the parameters.containsKey(String) you would do something like: return EventLogCategory.fromValue(Helpers.getString(parameters, PlatformSmartmeteringKeys.EVENT_TYPE, DEFAULT_EVENT_LOG_CATEGORY)); as a one-liner.
+inUse is set twice in this constructor
+remoteVolumeName passed twice. I feel remoteHost to be passed as second arg
+Can you just change the return type of this method?
+Just want to double check that the following null check is correct:  if (mScrollDirectionListener != null) { mDetector.onTouchEvent(event); }  I think yes, since mDetector is always not null, and it fires updates on mScrollDirectionListener.
+I don't think we need to call .toString() on objects passed to String.format - the method does that internally.
+this does not handle the empty 'lists', it will throw an exception
+This should follow the normal exception handling path and let the caller handle the printing of the exception.
+So, if the xpath query matches event than this method will return true, right? Than the event will be propagated to TreeWalker. This java if (!filter.accept(event)) {  will be evaluated to false and the message will not be removed from the set. Thus, what is the sense of the suppression? What do you filter? Look at testMatching. The user writes the query /CLASS_DEF[@text='InputSuppressByXpath'] in order to suppress the violation, the filter should deny the event, but your filter will accept it.
+Please use assertThat (result, failsWith(NAME_OF_FAILURE))
+StringUtils.isEmpty
+If dataRows is empty (hasNext() = false) but batch.size() < BATCH_SIZE, there will be NoSuchElementException thrown in next line.
+Why did we make this public?
+I think 15, 11, and 4542278 should be named constants.
+could be simplified: Collections.addAll(refsSpecs, specs);
+Formatting issues. Please use appropriate spaces between string literals.
+unneeded throws Exception
+this will not work in dev mode, should be config.setSecure(environment.acceptsProfiles(Initializer.PROFILE_LIVE ))
+Please consider adding an overridden version of the Script(String, int, Logger) constructor that accepts Duration to encapsulate this type conversion.
+The base implementation should throw UnsupportedOperationException, since the feature is always provided by an overriding method in a derived type.
+Keep an static GeometryType array private static final GeometryType[] ID_TO_TYPE_MAP = new GeometryType[] {POINT, MULTI_POINT, ...}; Then you can avoid the switch branching for better performance return ID_TO_TYPE_MAP[id];
+Is it necessary to call this again?
+Argument name
+Looking at the CommandCache#reset() method you pointed me to, it made me realize that we should check here that ctx is not null first, to avoid any risk of NPE.
++ NUM_HEADERS + NUM_FOOTERS;
+No interest in removing the stageTimeoutMs value?
+Can you add getId() and mark id() as deprecated?
+Is this method used?
+That would case the page loading to fail. The exception should be removed from GerritUtil.toReview() instead.
+this change is no longer needed.
+Is payeeIdL a typo or intentional?
+make this synchronized.
+Here it would be nice to use a static import - that would make it more consistent with the other code
+Why is this necessary? This should probably use the generic updateBiometicListeningState(). I think you're doing this to turn on the iris scanner? If so, you should leave it authenticating state, like we do for fingerprint, and send another signal to go into high power mode to complete authentication. This is what we do in fingerprint.
+Please add a java Objects.requireNonNull(computation, "computation is null");
+Should this just accept a Class? Then the caller doesn't have to instantiate an instance that's only going to be used to call getClass() and then be discarded.
+Program to interface, not to implementation - please change return type to Map<String, Object>
+Maybe wrap in an immutable map.
+Can we have a thread name here?
+must be package local
+suggestion connectionFactoryList.forEach((ldap, connectionFactory) -> connectionFactory.close(); );
+this("Safety Command")
+Should be a SamzaException with a message, not NPE.
+use ShellIsAvailable
+DatalakeClusterUpgradeTriggerEvent should be renamed as it is general now
+Just curious, why do we need to change the access qualifier to protected?
+getIgnorePrefix, the deprecated one, should just return ignorePrefix() by delegating to the new one.
+![Codacy](<LINK_0> Issue found: [Use explicit scoping instead of the default package private level](<LINK_1>
+We need to check offset + length <= arr.length?
+We usually don final local variables.
+I thought you wanted to end this practice, Adrian?
+Use Guava hashCode function
+!reason.isEmpty() can be used
+can be delegated as: putByteProperty(key(key), value)
+use a constants in PicsConstants for page.png
+On iOS I chose to not ignore this error since it makes the data structure useless and should require some action from the API consumer.
+This should stay final
+You might want to consider creating a ViewAction1<T> abstract class to contain the reference to the WeakReference<View> and avoid having a Field for the view in all your Action1 implementations?
+backspace (bracket should be one tab back)
+Wouldn't it make sense to at least log a warning? I mean, in the end it's the user who accidentally made a mistake/typo, the service silently "accepts" this configuration but it somehow does not really work as expected. Or did I miss anything?
+@slubwama provide an error message description of what has failed in addition to the stack trace
+Can this be reduced to return equals(FRIEND_TRUST.NORMAL)?
+Why is there a fromByteArray method? Why not call the constructor directly?
+Could we reuse instances? Perhaps justified if getCoder is frequently called.
+This should say "LocalTime".
+You need to add a check: if (!(selection instanceof IStructuredSelection)) { return null; } This will also make sure that selection is not null; Also, usually we cast to IStructuredSelection instead of StructuredSelection.
+return an Optional<Integer> instead, then you can probably also get rid of JMXServer#getInstance
+Huh? :-)
+have a look [<LINK_0>](here). This class should be deprecated and no longer be updated, at all.
+return symbol != null ? symbol.qualifiedName() : "";
+I'm not sure the name SOFT_LIMIT is proper here. How about just omitting SOFT?
+Just think it would be nice to see **queries.add(query)** in for loop and then logg that it was added. What do you think?
+I think you want to do this in the reverse order
+Can we have a message assert on this? I think the point here is that the exception thrown by the runner close isn't the exception that happened inside the shutdown operation
+Wenn super.close ne Exception wirft, wird der Export-Job nicht geschlossen :( suggestion try (Closeable c = super) { exportJob.close(); }  Das try with resources macht intern ziemlich viele coole Sachen: <LINK_0>
+final
+Why are we doing double math here? This should be: return Math.max(1L, nano / 1000L);
+Should this have output partition too?
+Consider Arrays.asList("xxx","yyy", "zzz");
+filter could still be null when this line is reached - we should check it isn't null
+- log warning that option is not supported by SNMP
+nit: remove brackets to be consistent with 2 lines below.
+There will be other validation errors here so it's not enough to test if there are any, but you need to use the for loop as below to test there's a one with code "Concept.error.notAtLeast..."
+To increase readability of this test I would just drop this statement, and move ifCond block inside if condition
+isInfoDebug
+Might want to call out (method name? or at least docs) that this is non-daemon since a lot of the other methods in this class seem to use daemon threads
+rename
+Here we need to check the OMResponse flag also. As for existing acl, we should set OMResponse response to false. And in that case, we don't need anything to be added to DB.
+But we have already clicked the button in the command before, haven't it?
+If you instead call this lastItemPositions and subtract 1 here, does that save you from having to subtract 1 from the final return? I think it reads clearer not to have a "- 1" on the last return.
+As requested in another pull request, please have a utility method for building a CommandRequest by command and context. There should be such a method already.
+The order of the arguments is reversed - it should be assertEquals("Vds id is not empty as expected", "", result);
+Args.notNull
+think you should add it as method somewhere
+I don't think we need this catch - this is handled by the boolean return value.
+same here. In case you want to open an ErrorScreen, you can do so by using one of the reportError() methods from <LINK_0>
+can you make all of these as just Query and not org.hibernate.Query?
+return ImmutableSet.of();
+studentsWhoRespond -> studentsWhoResponded
+This should be removed - it's absolutely fine for entity data to be empty. It's only during serialization to native format that it should not be empty (ie adding the EntityType field)
+Use same order as the field declarations.
+does this need to be calculated on the fly each time or can we save the iterable?
+We should call the init() method first, instead of letting the KerberosAuthenticator do that for us.
+Unsure this addition is useful.
+Remove all "null" cases. There is a default case for that.
+static
+ctx.close()
+is the server name mandatory still ?
+replacing this with helper method would be great
+It seems like we would be better off making this actually return the path instead of a String. It's different than the old API, but I'm not sure I see the use of getting a string back.
+Add a blank here, please.
+should return the variables referenced in the right hand side of the effect declaration, e.g. the start of the path in each Effect in the effectSet.
+If you are using synchronization to control access to the session data, than I would suggest reverting the map type to a simple HashMap and synchronizing around the map as opposed to this whenever you read, put, remove, or alter it.
+Just think it would be nice to see **queries.add(query)** in for loop and then logg that it was added. What do you think?
+Should be externalized.
+Which tests fail if we don't have this line?
+use log's parameter here
+hmm, why don't you verify the type ?
+you can simplify it with a single line by replacing the method's body with: return validate(hostExists()) && validate(hostStatusValid());
+this is 3.3 feature, not 3.2
+This check feels a little weird for a few reasons. It behaves like a factory (in that it returns new instances) but sLock is not assigned here. It also initializes a static field from an instance method and that feels strange. I suspect that if the lock is not being acquired in one method and released in another, and there aren't any waits involved a more primitive synchronization technique may be sufficient (such as a synchronized method or block, without the use of a ReentrantLock) -- I'll leave this up to your judgement but this looks dodgy
+Can this be private, or is there another use case for default attribute outside the builder's call?
+Don't need toString()
+unused field
+It's beeter to used int type.
+Maybe catch Exception? Otherwise propagation stops.
+This is just delegating to getNext. Maybe we can put getNext code here, since it's the generate value logic.
+Can you please move the Preconditions up to the constructor? Also perhaps check for matching with " projects/(projectId)/instances/(instanceId)/clusters/(clusterId)"?
+it needs to be protected against concurrent modification
+why not replace these two lines with return (getState(key) == State.SET)
+You need to verify the recorded request. MockWebServer will return each enqueued request upon _any_ request. You need to verify that the generated request is the expected one: expected request uri, method, headers and body. The same must be applied in all methods in this class.
+throw e will never be executed.
+Should this return the AzureTable?
+Remove by dn/key.
+please use String.format to concatenate strings
+Everywhere we call entity.getClass - we need to use the EntityDictionary.getTYpe instead.
+Why are you changing to patient 7 here too?
+Log debug - not info.
+could we check this without throwing an exception?
+Should be jsonOne. This is assuming that the numeral part of the variable name is the expected number of fields in the serialized version. If that's not the case, then can you elaborate on the naming convention?
+@benbosman : I'd still encourage us to start with minimal/basic unit tests rather than waiting for "perfection". As you'll see above, I already have concerns that the UUID parsing is very fragile. So, having unit tests to prove it is working at a basic level would be helpful here, especially since the client using the REST API can literally send *anything* in a text/uri-list...so we need to ensure the parsing works as we expect.
+What if we have only private static boolean isIncluded(String[] groups, Collection<String> includedGroups, Collection<String> excludedGroups) instead of 2 methods?
+I think on reason to wrap into isDebugEnabled() since we don't do any logic with argument to log.
+This field is written here but never read, can be removed (Findbugs)
+suggestion  I would just have this call blockingClose() and move any checks in there as I think that makes blockingClose() and nonBlockingClose() more symmetrical.
+Please, use text "Project owner login" (Name was fixed after sending this pool request) thank you.
+This can be made static
+no need for an ArrayList

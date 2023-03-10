@@ -1,0 +1,28 @@
+processing: 1
+processing-instance  0 / 1000
+1  time cost: 6.9840967655181885 s
+processing: 3
+processing-instance  0 / 1000
+3  time cost: 6.80095648765564 s
+processing: 5
+processing-instance  0 / 1000
+5  time cost: 7.109713792800903 s
+processing: 10
+processing-instance  0 / 1000
+10  time cost: 6.731386661529541 s
+
+k candidates:  1
+PP    : 39/1000 (%3.90)
+BLEU mean              :  0.13274009906115833
+
+k candidates:  3
+PP    : 44/1000 (%4.40)
+BLEU mean              :  0.1879167433799872
+
+k candidates:  5
+PP    : 44/1000 (%4.40)
+BLEU mean              :  0.2107718177472795
+
+k candidates:  10
+PP    : 44/1000 (%4.40)
+BLEU mean              :  0.23871755429027927
