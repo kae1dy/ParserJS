@@ -1,28 +1,28 @@
+Vector Length: 798282
+
 processing: 1
 processing-instance  0 / 1000
-1  time cost: 6.9840967655181885 s
+1  time cost: 6.87813401222229 s
 processing: 3
 processing-instance  0 / 1000
-3  time cost: 6.80095648765564 s
+3  time cost: 6.587176084518433 s
 processing: 5
 processing-instance  0 / 1000
-5  time cost: 7.109713792800903 s
+5  time cost: 6.894455194473267 s
 processing: 10
 processing-instance  0 / 1000
-10  time cost: 6.731386661529541 s
+10  time cost: 6.566848039627075 s
 
 k candidates:  1
+  0%|          | 0/1000 [00:00<?, ?it/s]
 PP    : 39/1000 (%3.90)
 BLEU mean              :  0.13274009906115833
-
 k candidates:  3
 PP    : 44/1000 (%4.40)
 BLEU mean              :  0.1879167433799872
-
 k candidates:  5
 PP    : 44/1000 (%4.40)
 BLEU mean              :  0.2107718177472795
-
 k candidates:  10
 PP    : 44/1000 (%4.40)
 BLEU mean              :  0.23871755429027927

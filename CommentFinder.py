@@ -13,31 +13,16 @@ from tqdm import tqdm
 from CFprocessData import CFProcessTestDataset, CFProcessTrainDataset
 from myProcessData import myProcessTestDataset, myProcessTrainDataset
 
-
 base = './dataset/'
 path_train = base + 'train.tsv'
 path_test_source = base + 'source.txt'
 path_test_target = base + 'target.txt'
 
+
 train_dataset = [line.strip() for line in open(path_train)]
-
-source_test = []
-with open(path_test_source) as file:
-    counter = 0
-    for line in file:
-        source_test.append(line.strip())
-        counter += 1
-        if counter == 1000:
-            break
-
-target_test = []
-with open(path_test_target) as file:
-    counter = 0
-    for line in file:
-        target_test.append(line.strip())
-        counter += 1
-        if counter == 1000:
-            break
+# for testing (16к ноут уже не тянет :( )
+source_test = [line.strip() for counter, line in enumerate(open(path_test_source)) if counter < 10000]
+target_test = [line.strip() for counter, line in enumerate(open(path_test_target)) if counter < 10000]
 
 source_train, target_train = myProcessTrainDataset(train_dataset)
 source_test = myProcessTestDataset(source_test)
@@ -46,8 +31,7 @@ data_count_vect = CountVectorizer(max_df=0.5, tokenizer=lambda x: x, preprocesso
 train_data_vect = data_count_vect.fit_transform(source_train)
 test_data_vect = data_count_vect.transform(source_test)
 
-print(f'Vector Lenght: {len(test_data_vect.toarray()[0])}\n')
-
+print(f'Vector Length: {train_data_vect.shape[1]}\n')
 
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()

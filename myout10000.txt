@@ -1,3 +1,5 @@
+Vector Length: 798282
+
 processing: 1
 processing-instance  0 / 10000
 processing-instance  1000 / 10000
