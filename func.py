@@ -1,6 +1,7 @@
 import tree_sitter
 from tree_sitter import Language, Parser
 from collections import deque
+import re
 
 LANG_PATH = "./tree-sitter-java"
 TARGET_PATH = "./build/my-languages.so"
@@ -25,6 +26,13 @@ def parse_code(data_list: list):
     return tokens
 
 
+def name_split(str: bytes):
+    name_list = re.findall(b'.+?(?:(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])|$)', str)
+    name_list = re.split(b'_+', b'_'.join(name_list))
+
+    return name_list
+
+
 # get tokens from AST-tree
 def get_tokens(root: tree_sitter.Node) -> list:
     list_nodes = deque([root])
@@ -36,7 +44,12 @@ def get_tokens(root: tree_sitter.Node) -> list:
             continue
 
         if not node.children:
-            leaves.append(node.text)
+            if "literal" in node.type:
+                continue
+            if node.is_named:
+                leaves += name_split(node.text)
+            else:
+                leaves.append(node.text)
 
         for children in node.children:
             if children:

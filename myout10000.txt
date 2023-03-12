@@ -1,4 +1,4 @@
-Vector Length: 798282
+Vector Length: 220779
 
 processing: 1
 processing-instance  0 / 10000
@@ -11,7 +11,7 @@ processing-instance  6000 / 10000
 processing-instance  7000 / 10000
 processing-instance  8000 / 10000
 processing-instance  9000 / 10000
-1  time cost: 169.3233597278595 s
+1  time cost: 256.4119403362274 s
 processing: 3
 processing-instance  0 / 10000
 processing-instance  1000 / 10000
@@ -23,7 +23,7 @@ processing-instance  6000 / 10000
 processing-instance  7000 / 10000
 processing-instance  8000 / 10000
 processing-instance  9000 / 10000
-3  time cost: 177.54042887687683 s
+3  time cost: 246.69699907302856 s
 processing: 5
 processing-instance  0 / 10000
 processing-instance  1000 / 10000
@@ -35,7 +35,7 @@ processing-instance  6000 / 10000
 processing-instance  7000 / 10000
 processing-instance  8000 / 10000
 processing-instance  9000 / 10000
-5  time cost: 171.68370294570923 s
+5  time cost: 240.20000386238098 s
 processing: 10
 processing-instance  0 / 10000
 processing-instance  1000 / 10000
@@ -47,20 +47,20 @@ processing-instance  6000 / 10000
 processing-instance  7000 / 10000
 processing-instance  8000 / 10000
 processing-instance  9000 / 10000
-10  time cost: 173.83436489105225 s
+10  time cost: 238.95235323905945 s
 
 k candidates:  1
-PP    : 308/10000 (%3.08)
-BLEU mean              :  0.12588085987949374
+PP    : 329/10000 (%3.29)
+BLEU mean              :  0.13143508969517723
 
 k candidates:  3
-PP    : 363/10000 (%3.63)
-BLEU mean              :  0.18393646946724485
+PP    : 387/10000 (%3.87)
+BLEU mean              :  0.19001959794904283
 
 k candidates:  5
-PP    : 376/10000 (%3.76)
-BLEU mean              :  0.20865336399380818
+PP    : 404/10000 (%4.04)
+BLEU mean              :  0.21543173772881108
 
 k candidates:  10
-PP    : 392/10000 (%3.92)
-BLEU mean              :  0.23892663455387514
+PP    : 421/10000 (%4.21)
+BLEU mean              :  0.24703703939030938

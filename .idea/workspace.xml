@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="74641a50-9bb9-4408-94a5-ab9780a4322a" name="Changes" comment="little changes">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommentFinder.py" beforeDir="false" afterPath="$PROJECT_DIR$/CommentFinder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/bleu_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/bleu_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/bleu_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/bleu_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/manual100.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/our_predictions_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/our_predictions_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/our_predictions_10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/our_predictions_10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/our_predictions_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/our_predictions_3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/our_predictions_5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/our_predictions_5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myout1000.txt" beforeDir="false" afterPath="$PROJECT_DIR$/myout1000.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myout10000.txt" beforeDir="false" afterPath="$PROJECT_DIR$/myout10000.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree-sitter-java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MuYi51GpdwrxrM8gHqzfiYUoMk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/kae1dy/ParserJavaGit/ParserJava&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="74641a50-9bb9-4408-94a5-ab9780a4322a" name="Changes" comment="" />
+      <created>1678619057723</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678619057723</updated>
+      <workItem from="1678619058943" duration="3781000" />
+      <workItem from="1678634664878" duration="4927000" />
+      <workItem from="1678639617743" duration="2069000" />
+    </task>
+    <task id="LOCAL-00001" summary="little changes">
+      <created>1678621454796</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678621454796</updated>
+    </task>
+    <task id="LOCAL-00002" summary="little changes">
+      <created>1678621610689</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678621610689</updated>
+    </task>
+    <task id="LOCAL-00003" summary="little changes">
+      <created>1678621637865</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678621637865</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="little changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="little changes" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ParserJava$CFprocessData.coverage" NAME="CFprocessData Coverage Results" MODIFIED="1678638324796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ParserJava$func.coverage" NAME="func Coverage Results" MODIFIED="1678638993614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ParserJava$CommentFinder.coverage" NAME="CommentFinder Coverage Results" MODIFIED="1678639621443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ParserJava$main.coverage" NAME="main Coverage Results" MODIFIED="1678639116300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

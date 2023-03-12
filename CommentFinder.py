@@ -1,15 +1,13 @@
-import numpy as np
-from sklearn.feature_extraction.text import CountVectorizer
-import pandas as pd
-import math
-import time, pickle, math, warnings, os, operator
-import string
-from sklearn.metrics.pairwise import cosine_similarity
-from nltk.translate import bleu_score
+import statistics
 import time
 from difflib import SequenceMatcher
-import statistics
+
+import numpy as np
+from nltk.translate import bleu_score
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 from tqdm import tqdm
+
 from CFprocessData import CFProcessTestDataset, CFProcessTrainDataset
 from myProcessData import myProcessTestDataset, myProcessTrainDataset
 
@@ -17,7 +15,6 @@ base = './dataset/'
 path_train = base + 'train.tsv'
 path_test_source = base + 'source.txt'
 path_test_target = base + 'target.txt'
-
 
 train_dataset = [line.strip() for line in open(path_train)]
 # for testing (16к ноут уже не тянет :( )
@@ -32,6 +29,7 @@ train_data_vect = data_count_vect.fit_transform(source_train)
 test_data_vect = data_count_vect.transform(source_test)
 
 print(f'Vector Length: {train_data_vect.shape[1]}\n')
+
 
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
@@ -102,9 +100,6 @@ for k in [1, 3, 5, 10]:
                 best_BLEU = current_BLEU
         BLEUscore.append(best_BLEU)
 
-    print(f'\nPP    : %d/%d (%s%.2f)' % (count_perfect, len(target_test), '%', (count_perfect * 100) / len(target_test)))
+    print(
+        f'\nPP    : %d/%d (%s%.2f)' % (count_perfect, len(target_test), '%', (count_perfect * 100) / len(target_test)))
     print(f'BLEU mean              : ', statistics.mean(BLEUscore))
-
-    with open(base + "bleu_" + str(k) + '.txt', 'w') as fs:
-        for bleu in BLEUscore:
-            fs.write(str(bleu) + '\n')
